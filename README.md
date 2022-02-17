@@ -1,0 +1,2 @@
+# IFTTT_DODO_AutoBot
+使用IFTTT实现DODO自动消息推送
