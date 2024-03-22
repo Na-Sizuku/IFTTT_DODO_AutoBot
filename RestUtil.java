@@ -9,7 +9,7 @@ public class RestUtil {
         HttpURLConnection conn = (HttpURLConnection) restURL.openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Authorization", "Bot <你的BOTID>.<你的BOT Token>");
+        conn.setRequestProperty("Authorization", "Bot <BOT ID>.<Bot Token>");
         conn.setDoOutput(true);
         PrintStream ps = new PrintStream(conn.getOutputStream());
         ps.print(query);
@@ -25,8 +25,9 @@ public class RestUtil {
     public static void main(String[] args) {
         RestUtil restUtil = new RestUtil();
         try {
-            String url = "https://botopen.imdodo.com/api/v1/channel/message/send";// 你需要测试的API地址
-            String query = "{channelId:135061,messageType:1,messageBody:{content:'test'}}"; // json格式
+            String url = "https://botopen.imdodo.com/api/v2/channel/message/send";// V2 API 
+            //String url = "https://botopen.imdodo.com/api/v1/channel/message/send";// V1 API
+            String query = "{\"channelId\":\"135061\",\"messageType\":\"6\",\"messageBody\":{\"card\":{\"type\":\"card\",\"theme\":\"blue\",\"title\":\"标题\",\"components\":[{\"type\":\"section\",\"text\":{\"type\":\"dodo-md\",\"content\":\"第一条内容\"}},{\"type\":\"section\",\"text\":{\"type\":\"dodo-md\",\"content\":\"第二条内容\"}},]}}}"; // json格式
             restUtil.postMethod(url, query);
         } catch (Exception e) {
             System.out.println(e.getMessage());
